@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pdftools-web  # Choose a name for your Render service
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app  # Or 'python app.py' for simpler testing, but gunicorn is better for production
+    wsgi: true
+    environmentVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS_JSON  # Key to access in your app
+        value: ${{secrets.GOOGLE_CREDENTIALS_JSON}}  # Reference to a Render Secret
