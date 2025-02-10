@@ -46,4 +46,5 @@ def index():
     return render_template('index.html')  # Or a simple HTML form directly here if you don't want templates
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Debug mode for local testing - disable for production!
+    port = int(os.environ.get('PORT', 5000)) # Get port from environment variable, default to 5000
+    app.run(host='0.0.0.0', port=port, debug=True) # Bind to 0.0.0.0 and use dynamic port
