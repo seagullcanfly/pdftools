@@ -21,9 +21,7 @@ def transcribe_pdf(pdf_file_path):
 
         # 3. Create credentials object from info - EXPLICITLY set project_id
         credentials = service_account.Credentials.from_service_account_info(
-            credentials_info,
-            project_id=credentials_info.get('project_id') # Explicitly pass project_id
-        )
+            credentials_info)
 
         # 4. Create the Vision client, explicitly passing the credentials
         client = vision.ImageAnnotatorClient(credentials=credentials)
